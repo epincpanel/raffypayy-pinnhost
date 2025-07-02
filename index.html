@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Payment Page</title>
+  <style>
+    :root {
+      --primary-color: #00ffc3;
+      --bg-dark: #0b0c2a;
+      --bg-light: #f3f3f3;
+      --text-dark: #ffffff;
+      --text-light: #000000;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      transition: background 0.3s, color 0.3s;
+      background: var(--bg-dark);
+      color: var(--text-dark);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      justify-content: center;
+      animation: fadeIn 1.5s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .card {
+      background: inherit;
+      border: 2px solid var(--primary-color);
+      padding: 25px;
+      border-radius: 16px;
+      text-align: center;
+      max-width: 400px;
+      box-shadow: 0 0 15px rgba(0, 255, 195, 0.3);
+    }
+
+    .avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 3px solid var(--primary-color);
+      object-fit: cover;
+    }
+
+    .btn {
+      display: inline-block;
+      margin: 10px;
+      padding: 10px 18px;
+      border-radius: 12px;
+      border: 2px solid var(--primary-color);
+      background: transparent;
+      color: inherit;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: var(--primary-color);
+      color: #000;
+    }
+
+    .language-switch,
+    .theme-switch {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .download-btn {
+      margin-top: 15px;
+      background-color: #00ff90;
+      color: #000;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="language-switch">
+    <select id="language" onchange="changeLanguage()">
+      <option value="id">🇮🇩 ID</option>
+      <option value="en">🇬🇧 EN</option>
+    </select>
+    <label>
+      <input type="checkbox" id="themeToggle" onchange="toggleTheme()"> ☀️/🌙
+    </label>
+  </div>
+
+  <div class="card">
+    <img class="avatar" src="https://files.catbox.moe/ozd4nv.jpg" alt="avatar">
+    <h2 id="title">Payment RAFI MODE LUFFY 🦅</h2>
+
+    <div>
+      <button class="btn" onclick="alert('DANA: 08816411039\nA/n KARSINI')">DANA</button>
+      <button class="btn" onclick="alert('GoPay: 08816411039\nA/n KARSINI')">GoPay</button>
+      <button class="btn" onclick="alert('QRIS digunakan untuk semua e-wallet.')">QRIS</button>
+    </div>
+
+    <p id="instruction">Pilih metode pembayaran di atas.</p>
+    <p id="after-payment">Setelah transfer, kirim bukti pembayaran ke <b>RAFI MODE LUFFY</b> melalui WhatsApp.</p>
+
+    <a href="https://wa.me/6287831650736" class="btn" style="background-color:#25D366; color: #fff;">Hubungi WhatsApp</a>
+
+    <br>
+    <a href="https://files.catbox.moe/rgi9qp.jpeg" download class="btn download-btn">Download QRIS</a>
+  </div>
+
+  <script>
+    function toggleTheme() {
+      const isDark = document.body.style.background === 'var(--bg-dark)';
+      if (isDark) {
+        document.body.style.background = 'var(--bg-light)';
+        document.body.style.color = 'var(--text-light)';
+      } else {
+        document.body.style.background = 'var(--bg-dark)';
+        document.body.style.color = 'var(--text-dark)';
+      }
+    }
+
+    function changeLanguage() {
+      const lang = document.getElementById("language").value;
+      document.getElementById("title").textContent = lang === 'en' ? 'Payment RAFI MODE LUFFY 🦅' : 'Payment RAFI MODE LUFFY 🦅';
+      document.getElementById("instruction").textContent = lang === 'en' ? 'Choose a payment method above.' : 'Pilih metode pembayaran di atas.';
+      document.getElementById("after-payment").innerHTML = lang === 'en'
+        ? 'After transferring, please send proof of payment to <b>RAFI MODE LUFFY</b> via WhatsApp.'
+        : 'Setelah transfer, kirim bukti pembayaran ke <b>RAFI MODE LUFFY</b> melalui WhatsApp.';
+    }
+  </script>
+</body>
+</html>
